@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Importing in Bootstrap stylings globally from the global lib folder-->
+		<link href="{{ url_for( 'static', filename='lib/css/bootstrap.css' ) }}" rel="stylesheet">
+		<!-- Ordinary css stylesheets placed in regular package's static folders-->
+		<link rel="stylesheet" href="{{ url_for( 'static', filename='css/style.css' ) }}">
+		<link rel="stylesheet" href="{{ url_for( 'zipcode.static', filename='css/map.css' ) }}">
+		<link rel="stylesheet" href="{{ url_for( 'market.static', filename='css/market.css' ) }}">
+		
+		<!-- Following looks to see if title is provided, renders default title if not-->
+		{% if title %}
+			<title>{{ title }} - MarketMeals</title>
+		{% else %}
+			<title>MarketMeals</title>
+		{% endif %}
+		
+		<!-- JavaScript file for frontend calls to the Flask backend -->
+		<script type="text/javascript" src="{{ url_for( 'static', filename='js/http.js' ) }}"></script>
+		<!-- Local scripts to create and operate the google maps api -->
+		<script type="text/javascript" src="{{ url_for( 'zipcode.static', filename='js/map.js' ) }}"></script>
+		<script type="text/javascript" src="{{ url_for( 'zipcode.static', filename='js/geo.js' ) }}"></script>
+		<script type="text/javascript" src="{{ url_for( 'zipcode.static', filename='js/view.js' ) }}"></script>
+		<!-- Execute a test database query from frontend JavaScript -->
+		<script type="text/javascript" src="{{ url_for( 'farmer.static', filename='js/data.js' ) }}"></script>
+		<!-- Retrieve market data from the url for direct url routing -->
+		<script type="text/javascript" src="{{ url_for( 'market.static', filename='js/market.js' ) }}"></script>
+	</head>
+	
+	<body class="container">
+		<header>
+			<h1>MarketMeals</h1>
+			<!-- New navigation ink stylings across the app's pages-->
+			<nav class='nav justify-content-center'>
+				<a class='nav-item nav-link' href='/'><li>Home</li></a>
+				<a class='nav-item nav-link' href='/about'><li>About</li></a>
+				<a class='nav-item nav-link' href='/recipe'><li>Recipes</li></a>
+				<!--We'll remove the comment below if/when we get the login functionality going.-->
+				<!--<a href='/login'><li>Login/Register</li></a>-->
+			</nav>
+			<!-- <nav>
+				<ul>
+					<a href="/"><li>Home</li></a>
+					<a href="/about"><li>About</li></a>
+					We'll remove the comment below if/when we get the login functionality going
+					<a href='/login'><li>Login/Register</li></a>
+				</ul>
+			</nav> -->
+		</header>
+		<main>
+			{% block content %}{% endblock %}
+		</main>
+		<!-- External CDN stylings used for frontend effects across the app -->
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		>
+		</script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		>
+		</script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		>
+		</script>
+	</body>
+	
+</html>
+
+
+

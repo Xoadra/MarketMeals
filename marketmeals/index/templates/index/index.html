@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+	<h2>Welcome to MarketMeals!</h2>
+	<p>Thank you for visiting MarketMeals, the link between your local farmer and your next meal.<p>
+	<p>Please enter your zipcode below, so we can show the markets near you.</p>
+	
+	<!-- Form behavior below can also be replicated by entering zip a code through the url -->
+	<form action="/location" method="POST">
+		<div>
+			<label>ZIP Code</label>
+			<input id="zipcode" type="text" name="zipcode" pattern="[0-9]{5}" title="Five digit zip code" />
+			<!-- Ajax method listens on this button, but actual form submission is not async -->
+			<button id="search" type="submit" value="Search">Search</button>
+		</div>
+	</form>
+	
+	<!-- Experimental button for testing database inserts and queries -->
+	<button id="query">Query</button>
+{% endblock %}
+
+
+

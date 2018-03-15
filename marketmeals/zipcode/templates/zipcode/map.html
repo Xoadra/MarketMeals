@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+	<h3>{{ zipcode }}</h3>
+	<!-- Map element to contain the api map -->
+	<div id="map">
+		<!-- <label>Map of Markets</label>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+		<meta charset="utf-8"/> -->
+	</div>
+	<!-- Importing in Google Maps api source -->
+	<script
+		async
+		defer
+		type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuoLYlF4zLuGmp1Ex9Q2J2w8mYpG6FiZM&callback=drawMap&libraries=places"
+	>
+	</script>
+{% endblock %}
+
+

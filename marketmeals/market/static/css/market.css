@@ -1,0 +1,27 @@
+
+
+
+
+#title {
+	color: #2c0d08;
+}
+
+#address {
+	text-align: center;
+	display: block;
+}
+
+/* #address {
+	display: inline-block;
+	text-align: center;
+	list-style-type: none;
+}
+
+#address li {
+	display: inline-block;
+	list-style-type: none;
+	margin: 0 2px;
+} */
+
+
+
