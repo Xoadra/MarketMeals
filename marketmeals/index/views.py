@@ -18,7 +18,6 @@ index = Blueprint( 'index', __name__, template_folder = html )
 @index.route( '/', methods = [ 'GET' ] )
 def land( ):
 	return render_template( 'index/index.html' )
-		return render_template( 'index.html' )
 
 
 @index.route( '/about', methods = [ 'GET' ] )
