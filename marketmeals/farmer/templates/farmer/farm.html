@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+	<h1>{{ farmer.first_name }} {{ farmer.last_name }}</h1>
+	
+	{% for category in catalog %}
+		<h3>{{ category.category }}</h3>
+		
+		<ul>
+			{% for product in category.product %}
+				
+				<!-- <p>{{ product.name }}</p> -->
+				
+				{% if category.category_id == product.category_id %}
+					<li>{{ product.name }}</li>
+				{% endif %}
+				
+			{% endfor %}
+		</ul>
+		
+		<hr />
+	{% endfor %}
+	
+{% endblock %}
+
+
+

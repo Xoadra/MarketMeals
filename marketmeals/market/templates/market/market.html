@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+	<h1 id="title">{{ total.session.name }}</h1>
+	<h3 id="address">{{ total.session.formatted_address }}</h3>
+	
+	<p id="address">
+		{{ total.database.address_1 }}{% if total.database.address_2  %} {{ total.database.address_2 }} {% endif %},
+		{{ total.database.city }}, {{ total.database.state }} {{ total.database.zip_code }}
+	</p>
+	
+	<!-- <div id='veg_and_farm_list'> -->
+		
+		<!-- <ul id="address">
+			{% for part in total.session.address_components %}
+				{% if part.types[ 0 ] != 'neighborhood' %}
+					<li>{{ part.short_name }}</li>
+				{% endif %}
+			{% endfor %}
+		</ul> -->
+		
+	{% for farmers in total.farmers %}
+		{% for farmer in farmers %}
+		
+		<!-- <h2 style="text-align: left">{{ farmer.first_name }} {{ farmer.last_name }}</h2> -->
+		<!-- <h3 style="text-align: left">{{ farmer.first_name }} {{ farmer.last_name }}</h3> -->
+			
+			<h3>Produce available from {{ farmer.first_name }} {{ farmer.last_name }}</h3>
+			
+			{% for category in categories %}
+				<!-- <h3>{{ category.name }}</h3> -->
+				<h4>{{ category.name }}</h4>
+				
+				{% for key in identifiers %}
+					{% if key == farmer.farmer_id %}
+						
+						<ul>
+							{% for pid in identifiers.get( key ) %}
+								
+									{% if pid.category_id == category.category_id %}
+										<!-- <h4 style="text-indent: 50px">{{ a.name }}</h4> -->
+										<li>{{ pid.name }}</li>
+									{% endif %}
+								
+							{% endfor %}
+						</ul>
+						
+					{% endif %}
+				{% endfor %}
+				
+			{% endfor %}
+			<hr />
+			
+		{% endfor %}
+	{% endfor %}
+	
+	
+	<!-- <h2>Recipes from Products Being Sold at</br>{{ total.session.name }}</h2> -->
+	<h3>Recipes from Products Being Sold at {{ total.session.name }}</h3>
+	
+	<ul>
+		{% for recipe in recipes %}
+			<li><a href="/recipe?recipe={{ recipe.name }}">{{ recipe.name }}</a></li>
+		{% endfor %}
+	</ul>
+	
+	
+	<!-- Importing in Google Maps api source -->
+	<script
+		async
+		defer
+		type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuoLYlF4zLuGmp1Ex9Q2J2w8mYpG6FiZM&libraries=places"
+	>
+	</script>
+{% endblock %}
+
+
+
